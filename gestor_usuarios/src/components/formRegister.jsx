@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./formRegister.css";
+import Swal from 'sweetalert2';
 
 export function FormRegister( props ){
 
@@ -18,6 +19,15 @@ export function FormRegister( props ){
     const handleSelectChange = (e)=>{
         setCardId(parseInt(e.target.value));
     }
+
+    const showAlert = () => {
+        Swal.fire({
+          title: '¡Éxito!',
+          text: 'Usuario registrado correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+      };
 
     // Obtener Número de tarjeta
     // const fetchCardNumber = async (e) => {
@@ -37,6 +47,7 @@ export function FormRegister( props ){
     // };
 
     // Registrar Usuario
+    
     const registerUser = (e) => {
       e.preventDefault();
 
@@ -52,7 +63,10 @@ export function FormRegister( props ){
         .then(response => response.json())
         .then(data => {
             if (data) { 
-            //   navigate('/about'); // Redirección
+                showAlert();
+                setTimeout( ()=>{
+                    navigate('/'); 
+                },2000)
             } else {
               console.log('Error en el registro:');
             }
@@ -61,10 +75,7 @@ export function FormRegister( props ){
             console.error('Error:', error);
           });
 
-        // console.log(inputName +': '+ cardNumber)
-        setTimeout( ()=>{
-            navigate('/'); 
-        },2000)
+        
     };
 
     return(
@@ -98,15 +109,19 @@ export function FormRegister( props ){
                         <option  className="input__field--bl " value="" disabled>Seleccione tarjeta</option>
                         
                         {
-                            //mostrar solo cards que no tengan un usuario asignado
-                            props.DBCards.filter((card) => card.idUsuario == null).map( (card, index) => ( 
+                            //? Mostrar solo cards que no tengan un usuario asignado
+                            props.DBCards.map( (card, index) => ( 
                             <option key={index} className="input__field--bl " value={card.id}>{card.codigo_card}</option>
                         )) 
                         }
                         
                     </select>
-                
+                    <label htmlFor="card" className="input__label">
+                        Cards Disponibles
+                    </label>
                 </div>
+
+
                 {/* <button onClick={fetchCardNumber} className="detectarTarjeta">
                     {buttonText}
                 </button> */}

@@ -7,7 +7,7 @@ export function Register() {
     const [cards, setCards] = useState([]);
   // Obtener usuarios al cargar la página
   useEffect(() => {
-    fetch("http://localhost:3000/cards")
+    fetch("http://localhost:3000/free-cards")
       .then((response) => response.json())
       .then((data) => {
         setCards(data);

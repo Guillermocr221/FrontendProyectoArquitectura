@@ -2,7 +2,8 @@ import "./tablaUsuarios.css";
 
 import React, { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import  {TarjetaUsuario} from "./TarjetaUsuario";
+import { TarjetaUsuario } from "./TarjetaUsuario";
+import { AsignarTarjeta } from "./AsignarTarjeta";
 
 export function TablaUsuarios(props) {
   const theadRef = useRef(null);
@@ -31,7 +32,7 @@ export function TablaUsuarios(props) {
       <div className="card">
         <header>
           <h2>Usuarios</h2>
-          <button type="button" onClick={toAdmin}>
+          <button type="button" onClick={toAdmin} title="Agregar Usuario">
             <span className="material-symbols-outlined"> person_add </span>
             Agregar
           </button>
@@ -44,6 +45,7 @@ export function TablaUsuarios(props) {
                 <th draggable="true">Nombre</th>
                 <th draggable="true">Fecha De Registro</th>
                 <th draggable="true">Tarjeta</th>
+                <th draggable="true">Accion</th>
               </tr>
             </thead>
             <tbody ref={tbodyRef}>
@@ -54,6 +56,9 @@ export function TablaUsuarios(props) {
                     <td>{new Date(usuario.fecha_registro).toLocaleDateString('es-ES')}</td>
                     <td>
                       <TarjetaUsuario idUsuario={usuario.idUsuario} />
+                    </td>
+                    <td>
+                      <AsignarTarjeta idUsuario={usuario.idUsuario}></AsignarTarjeta>
                     </td>
                   </tr>
 
