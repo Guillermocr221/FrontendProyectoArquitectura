@@ -6,7 +6,7 @@ export function TarjetaUsuario({ idUsuario }) {
 
   useEffect(() => {
     const obtenerTarjeta = (idUsuario) => {
-      let url = `http://localhost:3000/card/${idUsuario}`; 
+      let url = `https://backendproyectoarquitectura.onrender.com/card/${idUsuario}`; 
 
       fetch(url)
         .then((response) => response.json())

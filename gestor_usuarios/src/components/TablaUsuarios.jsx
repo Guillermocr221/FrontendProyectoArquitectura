@@ -15,7 +15,7 @@ export function TablaUsuarios(props) {
   }
 
   const obtenerTarjeta = (idUsuario)=>{
-    let url  = `https://localhost:3000/users/${idUsuario}`;
+    let url  = `https://backendproyectoarquitectura.onrender.com/users/${idUsuario}`;
 
     fetch(url)
       .then(response => response.json())

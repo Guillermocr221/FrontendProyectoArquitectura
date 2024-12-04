@@ -14,7 +14,7 @@ export function AsignarTarjeta({idUsuario}) {
   useEffect(() => {
     const obtenerTarjeta = async (idUsuario) => {
       try {
-        const response = await fetch(`http://localhost:3000/card/${idUsuario}`);
+        const response = await fetch(`https://backendproyectoarquitectura.onrender.com/card/${idUsuario}`);
         const data = await response.json();
         setTarjeta(data[0][0]);
         // console.log(data[0][0])

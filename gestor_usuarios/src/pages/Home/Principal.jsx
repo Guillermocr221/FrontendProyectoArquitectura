@@ -6,8 +6,8 @@ import Swal from 'sweetalert2';
 import alertSoundFile from '../../assets/sonidoAlerta.mp3';
 import warningSoundFile from '../../assets/sonidoWarning.mp3';
 
-const socket = io('http://localhost:3000');
-
+// const socket = io('http://localhost:3000');
+const socket = io('https://backendproyectoarquitectura.onrender.com');
 
 const Toast = Swal.mixin({
   toast: true,
@@ -62,12 +62,13 @@ const alertaWarning = () => {
     timerProgressBar: true
   });
 };
+
 export function Principal() {
   const [users, setUsers] = useState([]); 
 
   // Usuarios al cargar la pagina y conectar el websocket.
   useEffect(() => {
-    fetch('http://localhost:3000/users')
+    fetch('https://backendproyectoarquitectura.onrender.com/users')
       .then(response => response.json())
       .then(data => {
         setUsers(data); 

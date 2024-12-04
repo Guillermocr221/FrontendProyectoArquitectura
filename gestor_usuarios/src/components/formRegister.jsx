@@ -54,7 +54,7 @@ export function FormRegister( props ){
       let nombre = inputName;
       const fecha_registro = new Date().toISOString().split('T')[0];
 
-      let url = "http://localhost:3000/users";
+      let url = "https://backendproyectoarquitectura.onrender.com/users";
       fetch( url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
