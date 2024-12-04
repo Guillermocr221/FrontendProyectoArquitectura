@@ -17,7 +17,7 @@ export function AsignarTarjeta({idUsuario}) {
         const response = await fetch(`http://localhost:3000/card/${idUsuario}`);
         const data = await response.json();
         setTarjeta(data[0][0]);
-        console.log(data[0][0])
+        // console.log(data[0][0])
       } catch (error) {
         console.error("Error:", error);
       } finally {
