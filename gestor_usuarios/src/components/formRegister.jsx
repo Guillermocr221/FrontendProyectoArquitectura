@@ -8,7 +8,7 @@ export function FormRegister( props ){
 
     
     const [inputName, setInputName] = useState('');
-    const [cardId, setCardId] = useState(''); 
+    const [cardId, setCardId] = useState('0'); 
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate(); 
 
@@ -17,7 +17,8 @@ export function FormRegister( props ){
     }
 
     const handleSelectChange = (e)=>{
-        setCardId(parseInt(e.target.value));
+        // setCardId(parseInt(e.target.value));
+        setCardId(e.target.value);
     }
 
     const showAlert = () => {
@@ -55,6 +56,7 @@ export function FormRegister( props ){
       const fecha_registro = new Date().toISOString().split('T')[0];
 
       let url = "https://backendproyectoarquitectura.onrender.com/users";
+
       fetch( url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -73,9 +75,7 @@ export function FormRegister( props ){
           })
           .catch(error => {
             console.error('Error:', error);
-          });
-
-        
+          });  
     };
 
     return(
@@ -111,7 +111,7 @@ export function FormRegister( props ){
                         {
                             //? Mostrar solo cards que no tengan un usuario asignado
                             props.DBCards.map( (card, index) => ( 
-                            <option key={index} className="input__field--bl " value={card.id}>{card.codigo_card}</option>
+                            <option key={index} className="input__field--bl " value={card.id_card}>{card.codigo_card}</option>
                         )) 
                         }
                         
