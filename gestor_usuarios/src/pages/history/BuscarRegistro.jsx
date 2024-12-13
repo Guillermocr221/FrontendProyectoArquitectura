@@ -84,7 +84,8 @@ export function BuscarRegistro() {
             <tbody>
               {registro.length > 0 ? (
                 registro.map((regis, index) => {
-                    const fechaFormateada = new Date(regis.fecha).toLocaleDateString("es-ES");
+                    // const fechaFormateada = new Date(regis.fecha).toLocaleDateString("es-PE");
+                    const fechaFormateada = regis.fecha.split("T")[0].split("-").reverse().join("/");;
                     return (
                       <tr key={index}>
                         <td>{regis.usuario}</td>
