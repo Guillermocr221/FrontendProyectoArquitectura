@@ -27,6 +27,7 @@ export function HistorialES() {
   
         if (response.ok) {
           console.log("Registros guardados en la base de datos.");
+          sessionStorage.setItem("registro", JSON.stringify([]));
           alert('Se crearon los registros');
           navigate('/');
 
