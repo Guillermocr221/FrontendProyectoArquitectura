@@ -38,11 +38,16 @@ export function HistorialES() {
       }
   }
 
+  const buscarClick = ()=>{
+    navigate('/buscarRegistro');
+  }
+
   return (
     <div>
-      <div className="card">
+      <div className="card card--hes">
         <header>
-          <h2>Historial de Desbloqueos</h2>
+          <h2>Historial de Desbloqueos (Sesión Actual)</h2>
+          <button onClick={buscarClick}>Buscar por Fecha</button>
         </header>
 
         <div className="wrapper">
@@ -73,7 +78,7 @@ export function HistorialES() {
         </div>
       </div>
       <div className="historialES__boxacciones">
-        <button onClick={handleClick} className="principal__botonHistorial">
+        <button onClick={handleClick} className="principal__botonHistorial" title="Guardar al final de la sesión">
           Guardar en Base de Datos
         </button>
       </div>
